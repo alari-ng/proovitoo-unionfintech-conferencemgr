@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: demo
+  datasource:
+    # url: jdbc:h2:file:/tmp/conferencedb    ## for persistent database
+    url: jdbc:h2:mem:conferencesdb  ## for application lifetime only database
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa.database-platform: org.hibernate.dialect.H2Dialect
+  h2.console.enabled: true  ## Enable H2 console for manual testing, accessible at: http://localhost:8080/h2-console
+
+server.error.include-message: always
+
+logging:
+  level:
+    root: INFO
+    com.netgroup.uniunfintech.conferencemgr: DEBUG
