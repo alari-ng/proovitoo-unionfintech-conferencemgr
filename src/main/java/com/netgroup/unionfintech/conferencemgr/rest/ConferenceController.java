@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.netgroup.unionfintech.conferencemgr.model.ConferenceCheckStatus;
 import com.netgroup.unionfintech.conferencemgr.model.ConferenceRoomAvailability;
 import com.netgroup.unionfintech.conferencemgr.model.NewConference;
 import com.netgroup.unionfintech.conferencemgr.service.ConferenceService;
@@ -32,7 +33,9 @@ public class ConferenceController {
 	}
 
 	@GetMapping("availability")
-	public ConferenceRoomAvailability checkConferenceRoomAvailability(@RequestParam String conferenceName) {
-		return conferenceService.checkConferenceRoomAvailability(conferenceName);
+	public ConferenceCheckStatus checkConferenceRoomAvailability(@RequestParam String conferenceName) {
+		ConferenceRoomAvailability conferenceRoomAvailability =
+				conferenceService.checkConferenceRoomAvailability(conferenceName);
+		return ConferenceCheckStatus.builder().conferenceRoomAvailability(conferenceRoomAvailability).build();
 	}
 }

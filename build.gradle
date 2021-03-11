@@ -2,11 +2,14 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.3.0.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'eclipse'
 }
 
 group = 'com.netgroup.uniunfintech'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+
+ext["groovy.version"] = "3.0.7"
 
 configurations {
     compileOnly {
@@ -27,6 +30,11 @@ dependencies {
 
     runtimeOnly 'com.h2database:h2:1.4.200'
  
+    testImplementation 'io.rest-assured:rest-assured:4.3.3'
+    testImplementation 'io.rest-assured:rest-assured-common:4.3.3'
+    testImplementation 'io.rest-assured:json-path:4.3.3'
+    testImplementation 'io.rest-assured:xml-path:4.3.3'
+
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
